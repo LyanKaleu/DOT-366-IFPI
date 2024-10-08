@@ -10,9 +10,24 @@ def peso_ideal(altura, sexo):
 
 
 def main():
-    h = float(input('Digite a sua altura em metros: '))
-    s = int(input('Digite o seu sexo (1 para feminino, 2 para masculino): '))
-    print(peso_ideal(h, s))
+    while True:
+        try:
+            s = int(input('Digite o seu sexo (1 para feminino, 2 para masculino): '))
+            if s != 1 and s != 2:
+                print("Sexo inválido.")
+                continue
+
+            while True:
+                h = float(input('Digite a sua altura em metros: '))
+                if 0 < h <= 3:
+                    break
+                else:
+                    print('O valor da altura deve estar entre 0 e 3!')
+
+            print(peso_ideal(h, s))
+            break
+        except ValueError:
+            print('Altura inválida ou sexo inválido.')
 
 
 if __name__ == '__main__':

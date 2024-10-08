@@ -8,10 +8,21 @@ def calcular_media(nota1, nota2):
 
 
 def main():
-    n1 = float(input('Digite a nota da primeira avaliação: '))
-    n2 = float(input('Digite a nota da segunda avaliação: '))
-    resultado = calcular_media(n1, n2)
-    print(resultado)
+    while True:
+        try:
+            n1 = float(input('Digite a nota da primeira avaliação: '))
+            if n1 < 0 or n1 > 10:
+                print('Nota inválida! Digite um valor entre 0 e 10.')
+                continue
+            n2 = float(input('Digite a nota da segunda avaliação: '))
+            if n2 < 0 or n2 > 10:
+                print('Nota inválida! Digite um valor entre 0 e 10.')
+                continue
+            resultado = calcular_media(n1, n2)
+            print(resultado)
+            break
+        except ValueError:
+            continue
 
 
 if __name__ == '__main__':

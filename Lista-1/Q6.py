@@ -10,9 +10,21 @@ def determinar_poligono(num_lados, medida_lado):
 
 
 def main():
-    n = int(input('Digite o número de lados do polígono (Obs: considere somente os valores 3, 4 ou 5): '))
-    m = float(input('Digite a medida do lado do polígono (Obs: considere somente os valores 3, 4 ou 5): '))
-    print(determinar_poligono(n, m))
+    while True:
+        try:
+            n = int(input('Digite o número de lados do polígono (Obs: considere somente os valores 3, 4 ou 5): '))
+            if n not in [3, 4, 5]:
+                print('Por favor, informe somente os valores 3, 4 ou 5 para número de lados.')
+                continue
+            m = float(input('Digite a medida do lado do polígono (Obs: considere somente os valores 3, 4 ou 5): '))
+            if m not in [3, 4, 5]:
+                print('Por favor, informe somente os valores 3, 4 ou 5 para medida do lado.')
+                continue
+            print(determinar_poligono(n, m))
+            break
+        except ValueError:
+            print("Por favor, digite um número válido.")
+            continue
 
 
 if __name__ == '__main__':

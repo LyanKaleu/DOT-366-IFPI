@@ -3,8 +3,13 @@ def celsius(temperatura_fahrenheit):
 
 
 def main():
-    temp_fahrenheit = float(input('Digite a temperatura em Fahrenheit: '))
-    print(f'Temperatura em Celsius: {celsius(temp_fahrenheit):.2f}°C')
+    while True:
+        try:
+            temp_fahrenheit = float(input('Digite a temperatura em Fahrenheit: '))
+            print(f'Temperatura em Celsius: {celsius(temp_fahrenheit):.2f}°C')
+            break
+        except ValueError:
+            continue
 
 
 if __name__ == '__main__':

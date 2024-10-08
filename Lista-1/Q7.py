@@ -6,8 +6,14 @@ def fatorial(num):
 
 
 def main():
-    n = int(input('Digite um número inteiro: '))
-    print(f'O fatorial de {n} é {fatorial(n)}')
+    while True:
+        try:
+            n = int(input('Digite um número inteiro: '))
+            print(f'O fatorial de {n} é {fatorial(n)}')
+            break
+        except ValueError:
+            print("Por favor, digite um número válido.")
+            continue
 
 
 if __name__ == '__main__':

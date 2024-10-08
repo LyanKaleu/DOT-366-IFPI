@@ -12,11 +12,16 @@ def contar_divisores(n):
 
 
 def main():
-    num = int(input('Digite um número inteiro e positivo: '))
-    quantidade, divisores_lista = contar_divisores(num)
-
-    print(f"O número {num} tem {quantidade} divisores.")
-    print(f"Os divisores de {num} são: {divisores_lista}")
+    while True:
+        try:
+            num = int(input('Digite um número inteiro e positivo: '))
+            quantidade, divisores_lista = contar_divisores(num)
+            print(f"O número {num} tem {quantidade} divisores.")
+            print(f"Os divisores de {num} são: {divisores_lista}")
+            break
+        except ValueError:
+            print("O número deve ser inteiro e positivo.")
+            continue
 
 
 if __name__ == '__main__':

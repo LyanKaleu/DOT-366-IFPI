@@ -1,7 +1,4 @@
 def somatorio(num):
-    if num <= 0:
-        return "O valor deve ser um número inteiro e positivo."
-
     soma = 0
     for i in range(1, num + 1):
         soma += i
@@ -10,8 +7,17 @@ def somatorio(num):
 
 
 def main():
-    n = int(input('Digite um número inteiro e positivo: '))
-    print(f'O somatório de 1 até {n} é {somatorio(n)}')
+    while True:
+        try:
+            n = int(input('Digite um número inteiro e positivo: '))
+            if n <= 0:
+                print("O valor deve ser um número inteiro e positivo.")
+                continue
+            print(f'O somatório de 1 até {n} é {somatorio(n)}')
+            break
+        except ValueError:
+            print("O valor deve ser um número inteiro e positivo.")
+            continue
 
 
 if __name__ == '__main__':

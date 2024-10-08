@@ -9,10 +9,16 @@ def main():
     for i in range(4):
         print(f"Série {i + 1}")
 
-        a1 = int(input("Digite o 1º número: "))
-        a2 = int(input("Digite o 2º número: "))
-        a3 = int(input("Digite o 3º número: "))
-        a4 = int(input("Digite o 4º número: "))
+        while True:
+            try:
+                a1 = int(input("Digite o 1º número: "))
+                a2 = int(input("Digite o 2º número: "))
+                a3 = int(input("Digite o 3º número: "))
+                a4 = int(input("Digite o 4º número: "))
+                break
+            except ValueError:
+                print("Por favor, digite um número válido.")
+                continue
 
         maior = Max(a1, a2)
         maior = Max(maior, a3)

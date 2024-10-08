@@ -10,9 +10,14 @@ def calcular_perimetro(raio):
 
 
 def main():
-    r = float(input('Digite o raio da circunferência: '))
-    print(f'Área: {calcular_area(r):.2f}')
-    print(f'Perímetro: {calcular_perimetro(r):.2f}')
+    while True:
+        try:
+            r = float(input('Digite o raio da circunferência: '))
+            print(f'Área: {calcular_area(r):.2f}')
+            print(f'Perímetro: {calcular_perimetro(r):.2f}')
+            break
+        except ValueError:
+            continue
 
 
 if __name__ == '__main__':
