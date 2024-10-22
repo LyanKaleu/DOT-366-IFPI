@@ -1,11 +1,17 @@
-def Max(a, b):
-    if a > b:
+def Max(a, b, c, d):
+    if a > b and a > c and a > d:
         return a
-    else:
+    elif b > a and b > c and b > d:
         return b
+    elif c > a and c > b and c > d:
+        return c
+    else:
+        return d
 
 
 def main():
+    maiores = []
+
     for i in range(4):
         print(f"Série {i + 1}")
 
@@ -20,12 +26,13 @@ def main():
                 print("Por favor, digite um número válido.")
                 continue
 
-        maior = Max(a1, a2)
-        maior = Max(maior, a3)
-        maior = Max(maior, a4)
+        maior = Max(a1, a2, a3, a4)
+        maiores.append(maior)
 
         print(f"O maior número da série é {maior}")
         print("-" * 30)
+    
+    print(f"O maior número de todas as 4 séries é {Max(maiores[0], maiores[1], maiores[2], maiores[3])}")
 
 
 if __name__ == '__main__':
