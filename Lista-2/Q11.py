@@ -99,14 +99,16 @@ def alterar_nome(lista):
         return
     while True:
         try:
-            posicao = int(input("Digite a posição do nome a ser alterado: "))
-            if posicao < 0 or posicao >= len(lista):
-                raise ValueError("Posição inválida!")
-            nome = input("Digite o novo nome: ")
+            nome = input("Digite o nome da pessoa para alterar: ")
             if not all(c.isalpha() or c.isspace() for c in nome):
                 raise ValueError("ERRO! O nome deve conter apenas letras alfabéticas e espaços.")
-            lista[posicao] = nome
-            print(f"Nome alterado com sucesso!")
+            if nome not in lista:
+                print(f"ERRO! Nome '{nome}' não encontrado!")
+            nome_novo = input("Digite o novo nome: ")
+            if not all(c.isalpha() or c.isspace() for c in nome_novo):
+                raise ValueError("ERRO! O novo nome deve conter apenas letras alfabéticas e espaços.")
+            lista[lista.index(nome)] = nome_novo
+            print(f"Nome '{nome}' alterado para '{nome_novo}' com sucesso!")
             return
         except ValueError as e:
             print(e)
@@ -118,11 +120,13 @@ def excluir_nome(lista):
         return
     while True:
         try:
-            posicao = int(input("Digite a posição do nome a ser excluído: "))
-            if posicao < 0 or posicao >= len(lista):
-                raise ValueError("Posição inválida!")
-            lista[posicao] = ""
-            print(f"Nome excluído com sucesso!")
+            nome = input("Digite o nome a ser excluído: ")
+            if not all(c.isalpha() or c.isspace() for c in nome):
+                raise ValueError("ERRO! O nome deve conter apenas letras alfabéticas e espaços.")
+            if nome not in lista:
+                print(f"ERRO! Nome '{nome}' não encontrado!")
+            lista[lista.index(nome)] = ""
+            print(f"Nome '{nome}' excluído com sucesso!")
             return
         except ValueError as e:
             print(e)
