@@ -1,0 +1,1 @@
+lista = gerar_lista(max_lista)

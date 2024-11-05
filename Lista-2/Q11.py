@@ -24,6 +24,8 @@ def menu():
     print("1) Cadastrar nome")
     print("2) Pesquisar nome")
     print("3) Listar todos os nomes")
+    print("4) Alternar nome")
+    print("5) Excluir nome")
     print("0) Sair do programa")
     print("----------------")
 
@@ -32,7 +34,7 @@ def selecionar_opcao():
     while True:
         try:
             opcao = int(input("Digite sua escolha:_"))
-            if opcao < 0 or opcao > 3:
+            if opcao < 0 or opcao > 5:
                 raise ValueError("Opção inválida!")
             return opcao
         except ValueError as e:
@@ -91,6 +93,41 @@ def listar_nomes(lista):
                 print(f'-> {nome}')
 
 
+def alterar_nome(lista):
+    if all(nome == "" for nome in lista):
+        print("ERRO! Nenhum nome cadastrado!")
+        return
+    while True:
+        try:
+            posicao = int(input("Digite a posição do nome a ser alterado: "))
+            if posicao < 0 or posicao >= len(lista):
+                raise ValueError("Posição inválida!")
+            nome = input("Digite o novo nome: ")
+            if not all(c.isalpha() or c.isspace() for c in nome):
+                raise ValueError("ERRO! O nome deve conter apenas letras alfabéticas e espaços.")
+            lista[posicao] = nome
+            print(f"Nome alterado com sucesso!")
+            return
+        except ValueError as e:
+            print(e)
+
+
+def excluir_nome(lista):
+    if all(nome == "" for nome in lista):
+        print("ERRO! Nenhum nome cadastrado!")
+        return
+    while True:
+        try:
+            posicao = int(input("Digite a posição do nome a ser excluído: "))
+            if posicao < 0 or posicao >= len(lista):
+                raise ValueError("Posição inválida!")
+            lista[posicao] = ""
+            print(f"Nome excluído com sucesso!")
+            return
+        except ValueError as e:
+            print(e)
+
+
 def main():
     tamanho = verificar_entrada()
     lista_nomes = gerar_lista(tamanho)
@@ -108,7 +145,10 @@ def main():
             pesquisar_nome(lista_nomes)
         elif opcao == 3:
             listar_nomes(lista_nomes)
-        
+        elif opcao == 4:
+            alterar_nome(lista_nomes)
+        elif opcao == 5:
+            excluir_nome(lista_nomes)
 
 
 if __name__ == '__main__':
